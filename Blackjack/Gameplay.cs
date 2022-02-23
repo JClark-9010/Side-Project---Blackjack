@@ -33,6 +33,7 @@ namespace Blackjack
             {
                 DealCards();
             }
+            return;
         }
 
         public void DealCards()
@@ -41,6 +42,8 @@ namespace Blackjack
             {
                 PlayingGame();
             }
+            userTotal = 0;
+            dealerTotal = 0;
             userCards.Add(gameplayDeck[0]);
             dealerCards.Add(gameplayDeck[1]);
             userCards.Add(gameplayDeck[2]);
@@ -109,6 +112,14 @@ namespace Blackjack
                     }
                 }
             }
+            foreach (Card card in dealerCards)
+            {
+                dealerTotal += card.Worth;
+            }
+            if (dealerTotal >= 17)
+            {
+                dealerStands = true;
+            }
             InGame();
         }
 
@@ -153,7 +164,11 @@ namespace Blackjack
                 Console.WriteLine(" *You hit 21!*");
                 Console.WriteLine(" *************");
                 userStands = true;
-                DealAdditionalDealer();
+                if (dealerStands == false)
+                {
+                    DealAdditionalDealer();
+                }
+                InGame();
             }
             if (userTotal > 21)
             {
@@ -161,7 +176,11 @@ namespace Blackjack
                 Console.WriteLine(" Dang it, you bust!");
                 FinalizeHand();
             }
-            DealAdditionalDealer();
+            if (dealerStands == false)
+            {
+                DealAdditionalDealer();
+            }
+            InGame();
         }
 
         public void DealAdditionalDealer()
@@ -233,10 +252,6 @@ namespace Blackjack
             {
                 userTotal += card.Worth;
             }
-            if (dealerTotal >= 17 && dealerTotal <= 21)
-            {
-                dealerStands = true;
-            }
             if (userStands == true && dealerTotal <= 16)
             {
                 DealAdditionalDealer();
@@ -268,42 +283,17 @@ namespace Blackjack
             {
                 DealAdditionalUser();
             }
-            if (userInput == 2 || userStands == true)
+            if (userInput == 2)
             {
                 userStands = true;
 
-                if (dealerTotal <= userTotal && dealerStands == false)
+                if (dealerStands == false)
                 {
                     Console.Clear();
                     DealAdditionalDealer();
                     Console.WriteLine();
                 }
-                if (dealerTotal <= userTotal && dealerStands == true)
-                {
-                    FinalizeHand();
-                }
-                if (userStands == true && dealerTotal <= 16)
-                {
-                    DealAdditionalDealer();
-                }
-                if (userStands == true && dealerStands == true)
-                {
-                    FinalizeHand();
-                }
-                if (userTotal == 21)
-                {
-                    if (dealerTotal <= userTotal && dealerStands == false)
-                    {
-                        Console.Clear();
-                        DealAdditionalDealer();
-                        Console.WriteLine();
-                    }
-                    if (dealerTotal <= userTotal && dealerStands == true)
-                    {
-                        FinalizeHand();
-                    }
-                }
-                if (dealerTotal == userTotal && dealerTotal <= 21 && userTotal <= 21)
+                if (dealerStands == true)
                 {
                     FinalizeHand();
                 }
@@ -366,7 +356,7 @@ namespace Blackjack
             }
             userCards.RemoveRange(0, userCards.Count);
             dealerCards.RemoveRange(0, dealerCards.Count);
-            Console.WriteLine(" Deal again? 1-Yes or 2-No");
+            Console.WriteLine(" Deal again? Yes(1) or No(2)");
             int dealAgain = int.Parse(Console.ReadLine());
             if (dealAgain == 1)
             {
@@ -402,6 +392,7 @@ namespace Blackjack
             Console.WriteLine();
             Console.WriteLine();
             finishedPlayingGame = true;
+            PlayingGame();
         }
 
         //public void UserAce()

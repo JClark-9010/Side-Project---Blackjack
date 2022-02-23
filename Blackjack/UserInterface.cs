@@ -13,6 +13,9 @@ namespace Blackjack
 
         public void MainMenu()
         {
+            Console.WriteLine(" -----------------------------------------");
+            Console.WriteLine(" |  Welcome to Jason's Blackjack Table!  |");
+            Console.WriteLine(" -----------------------------------------");
             bool finishedWithMenu = false;
             while (!finishedWithMenu)
             {
@@ -21,9 +24,6 @@ namespace Blackjack
                 List<Card> menuDeck = new List<Card>();
                 cardDeck.CreateDeck(menuDeck);
                 cardDeck.GetDeck(menuDeck);
-                Console.WriteLine(" -----------------------------------------");
-                Console.WriteLine(" |  Welcome to Jason's Blackjack Table!  |");
-                Console.WriteLine(" -----------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine(" What do you want to do?");
                 Console.WriteLine();
@@ -36,7 +36,7 @@ namespace Blackjack
 
                 if (userInput == 1)
                 {
-                    finishedWithMenu = true;
+                    finishedWithMenu = false;
                     Console.Clear();
                     Console.WriteLine(" Alright, let's play!");
                     Console.WriteLine();
@@ -110,6 +110,7 @@ namespace Blackjack
         {
             Console.Clear();
             Console.WriteLine("The rules are not yet available, check back later!");
+            Console.WriteLine();
             MainMenu();
         }
     }
