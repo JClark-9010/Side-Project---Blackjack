@@ -8,14 +8,15 @@ namespace Blackjack
     {
         public void RunInterface()
         {
-            Console.WriteLine("Welcome to Jason's Blackjack Table!");
-            Console.WriteLine("***********************************");
+            Console.WriteLine(" -----------------------------------------");
+            Console.WriteLine(" |  Welcome to Jason's Blackjack Table!  |");
+            Console.WriteLine(" -----------------------------------------");
             Console.WriteLine();
-            Console.WriteLine("What do you want to do?");
-            DisplayMenu();
+            Console.WriteLine(" What do you want to do?");
+            MainMenu();
         }
 
-        public void DisplayMenu()
+        public void MainMenu()
         {
             bool finishedWithMenu = false;
             while (!finishedWithMenu)
@@ -26,10 +27,10 @@ namespace Blackjack
                 cardDeck.CreateDeck(menuDeck);
                 cardDeck.GetDeck(menuDeck);
                 Console.WriteLine();
-                Console.WriteLine("1) I want to play Blackjack!");
-                Console.WriteLine("2) I need to checkout the rules.");
-                Console.WriteLine("3) I want to see the deck, make sure it's all there.");
-                Console.WriteLine("4) Exit game.");
+                Console.WriteLine(" 1) I want to play Blackjack!");
+                Console.WriteLine(" 2) I need to checkout the rules.");
+                Console.WriteLine(" 3) I want to see the deck, make sure it's all there.");
+                Console.WriteLine(" 4) Exit game.");
 
                 int userInput = int.Parse(Console.ReadLine());
 
@@ -37,10 +38,11 @@ namespace Blackjack
                 {
                     finishedWithMenu = true;
                     Console.Clear();
-                    Console.WriteLine("Alright, let's play!");
+                    Console.WriteLine(" Alright, let's play!");
                     Console.WriteLine();
-                    Console.WriteLine("Initial deal");
-                    Console.WriteLine("============");
+                    Console.WriteLine(" ==============");
+                    Console.WriteLine(" -Initial deal-");
+                    Console.WriteLine(" ==============");
                     Console.WriteLine();
                     gameplay.PlayingGame();
                 }
@@ -54,9 +56,9 @@ namespace Blackjack
                     Console.Clear();
                     cardDeck.DisplayDeck(menuDeck);
                     Console.WriteLine();
-                    Console.WriteLine("There it is! Now what would you like to do?");
+                    Console.WriteLine(" There it is! Now what would you like to do?");
                     Console.WriteLine();
-                    Console.WriteLine("**Okay, well now I want to see it shuffled!**  (Enter secret code \"5\")");
+                    Console.WriteLine(" **Okay, well now I want to see it shuffled!**  (Enter secret code \"5\")");
                 }
                 if (userInput == 4)
                 {
@@ -68,7 +70,7 @@ namespace Blackjack
                     Console.Clear();
                     cardDeck.DisplayShuffledDeck(menuDeck);
                     Console.WriteLine();
-                    Console.WriteLine("All shuffled! Now what would you like to do?");
+                    Console.WriteLine(" All shuffled! Now what would you like to do?");
                     Console.WriteLine();
                 }
             }
@@ -85,7 +87,7 @@ namespace Blackjack
             {
                 finishedWithGameMenu = false;
                 Console.WriteLine();
-                Console.WriteLine("Hit(1) or stay(2)?");
+                Console.WriteLine(" Hit(1) or stay(2)?");
                 Console.ReadLine();
                 int userInput = int.Parse(Console.ReadLine());
 
@@ -93,7 +95,7 @@ namespace Blackjack
                 {
                     finishedWithGameMenu = false;
                     Console.WriteLine();
-                    gameplay.DealACard();
+                    gameplay.DealCards();
                     //InGameMenu();
 
                 }

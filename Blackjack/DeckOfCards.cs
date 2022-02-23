@@ -7,8 +7,6 @@ namespace Blackjack
 {
     class DeckOfCards
     {
-        public int AceWorth = 0;
-
         public void CreateDeck(List<Card> deckOfCards)
         {
             string[] suits = new string[] { "Clubs", "Diamonds", "Hearts", "Spades" };
@@ -38,7 +36,7 @@ namespace Blackjack
 
                 if (card.Value == "Ace")
                 {
-                    card.Worth = AceWorth;
+                    card.Worth = 0;
                 }
             }
         }
@@ -52,13 +50,25 @@ namespace Blackjack
         {
             foreach (Card card in deckOfCards)
             {
-                if (card.Value != "10")
+                if (card.Value == "Queen")
                 {
-                    Console.WriteLine(card.Value.PadLeft(4) + "   - " + card.Suit);
+                    Console.WriteLine($"    {card.Value} -  {card.Suit}");
                 }
-                if (card.Value == "10")
+                else if (card.Value == "King" || card.Value == "Jack")
                 {
-                    Console.WriteLine(card.Value.PadLeft(5) + "  - " + card.Suit);
+                    Console.WriteLine($"    {card.Value}  -  {card.Suit}");
+                }
+                else if (card.Value == "Ace")
+                {
+                    Console.WriteLine($"    {card.Value}   -  {card.Suit}");
+                }
+                else if (card.Value == "10")
+                {
+                    Console.WriteLine($"    {card.Value}    -  {card.Suit}");
+                }
+                else
+                {
+                    Console.WriteLine($"    {card.Value}     -  {card.Suit}");
                 }
             }
         }
@@ -68,13 +78,25 @@ namespace Blackjack
             deckOfCards = deckOfCards.OrderBy(i => Guid.NewGuid()).ToList();
             foreach (Card card in deckOfCards)
             {
-                if (card.Value != "10")
+                if (card.Value == "Queen")
                 {
-                    Console.WriteLine(card.Value.PadLeft(4) + "   - " + card.Suit);
+                    Console.WriteLine($"    {card.Value} -  {card.Suit}");
                 }
-                if (card.Value == "10")
+                else if (card.Value == "King" || card.Value == "Jack")
                 {
-                    Console.WriteLine(card.Value.PadLeft(5) + "  - " + card.Suit);
+                    Console.WriteLine($"    {card.Value}  -  {card.Suit}");
+                }
+                else if (card.Value == "Ace")
+                {
+                    Console.WriteLine($"    {card.Value}   -  {card.Suit}");
+                }
+                else if (card.Value == "10")
+                {
+                    Console.WriteLine($"    {card.Value}    -  {card.Suit}");
+                }
+                else
+                {
+                    Console.WriteLine($"    {card.Value}     -  {card.Suit}");
                 }
             }
         }
