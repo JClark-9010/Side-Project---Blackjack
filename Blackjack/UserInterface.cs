@@ -8,11 +8,6 @@ namespace Blackjack
     {
         public void RunInterface()
         {
-            Console.WriteLine(" -----------------------------------------");
-            Console.WriteLine(" |  Welcome to Jason's Blackjack Table!  |");
-            Console.WriteLine(" -----------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine(" What do you want to do?");
             MainMenu();
         }
 
@@ -26,6 +21,11 @@ namespace Blackjack
                 List<Card> menuDeck = new List<Card>();
                 cardDeck.CreateDeck(menuDeck);
                 cardDeck.GetDeck(menuDeck);
+                Console.WriteLine(" -----------------------------------------");
+                Console.WriteLine(" |  Welcome to Jason's Blackjack Table!  |");
+                Console.WriteLine(" -----------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine(" What do you want to do?");
                 Console.WriteLine();
                 Console.WriteLine(" 1) I want to play Blackjack!");
                 Console.WriteLine(" 2) I need to checkout the rules.");
@@ -49,6 +49,7 @@ namespace Blackjack
                 if (userInput == 2)
                 {
                     finishedWithMenu = false;
+                    DisplayRules();
                 }
                 if (userInput == 3)
                 {
@@ -62,7 +63,8 @@ namespace Blackjack
                 }
                 if (userInput == 4)
                 {
-                    finishedWithMenu = false;
+                    finishedWithMenu = true;
+                    return;
                 }
                 if (userInput == 5)
                 {
@@ -96,14 +98,19 @@ namespace Blackjack
                     finishedWithGameMenu = false;
                     Console.WriteLine();
                     gameplay.DealCards();
-                    //InGameMenu();
-
                 }
                 if (userInput == 2)
                 {
                     finishedWithGameMenu = false;
                 }
             }
+        }
+
+        public void DisplayRules()
+        {
+            Console.Clear();
+            Console.WriteLine("The rules are not yet available, check back later!");
+            MainMenu();
         }
     }
 }

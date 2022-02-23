@@ -32,7 +32,6 @@ namespace Blackjack
             while (!finishedPlayingGame)
             {
                 DealCards();
-                break;
             }
         }
 
@@ -398,7 +397,10 @@ namespace Blackjack
 
         public void FinishGame()
         {
+            Console.Clear();
             Console.WriteLine(" Great game!");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         //public void UserAce()

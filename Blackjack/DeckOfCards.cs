@@ -43,7 +43,6 @@ namespace Blackjack
 
         public List<Card> GetDeck(List<Card> deckOfCards)
         {
-
             return deckOfCards;
         }
         public void DisplayDeck(List<Card> deckOfCards)
