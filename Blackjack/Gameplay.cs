@@ -12,6 +12,7 @@ namespace Blackjack
         List<Card> userCards = new List<Card>();
         List<Card> dealerCards = new List<Card>();
         List<Card> discardPile = new List<Card>();
+        private bool finishedPlayingGame = false;
         private int userTotal;
         private int dealerTotal;
         private bool dealerStands = false;
@@ -27,7 +28,6 @@ namespace Blackjack
             deckOfCards.GetDeck(gameplayDeck);
             gameplayDeck = gameplayDeck.OrderBy(i => Guid.NewGuid()).ToList();
 
-            bool finishedPlayingGame = false;
 
             while (!finishedPlayingGame)
             {
@@ -401,6 +401,7 @@ namespace Blackjack
             Console.WriteLine(" Great game!");
             Console.WriteLine();
             Console.WriteLine();
+            finishedPlayingGame = true;
         }
 
         //public void UserAce()
