@@ -1,4 +1,4 @@
-# Repo1
+# Blackjack
 
 Project created in Visual Studio. Used Tech Elevator course material for reference (past lessons, pair projects). 
 Googled a fair amount for various things (easy ways to shuffle a list).
